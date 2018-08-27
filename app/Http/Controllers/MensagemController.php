@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mensagem;
 use Illuminate\Http\Request;
+use \Illuminate\Support\Facades\Validator;
 
 class MensagemController extends Controller
 {
@@ -25,8 +26,7 @@ class MensagemController extends Controller
      */
     public function create()
     {
-        //
-    }
+        return view('mensagem.create');    }
 
     /**
      * Store a newly created resource in storage.
@@ -36,8 +36,38 @@ class MensagemController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $messages = array(
+            'title.required' => 'É obrigatório um título para a atividade',
+            'description.required' => 'É obrigatória uma descrição para a atividade',
+            'scheduledto.required' => 'É obrigatório o cadastro da data/hora da atividade',
+        );
+
+        //vetor com as especificações de validações
+        $regras = array(
+            'title' => 'required|string|max:255',
+            'description' => 'required',
+            'scheduledto' => 'required|string',
+        );
+
+        //cria o objeto com as regras de validação
+        $validador = Validator::make($request->all(), $regras, $messages);
+
+        //executa as validações
+        if ($validador->fails()) {
+            return redirect('mensagem/create')
+            ->withErrors($validador)
+            ->withInput($request->all);
+        }
+
+        //se passou pelas validações, processa e salva no banco...
+        $obj_Mensagem = new Mensagem();
+        $obj_Mensagem->title =       $request['title'];
+        $obj_Mensagem->description = $request['description'];
+        $obj_Mensagem->scheduledto = $request['scheduledto'];
+        $obj_Mensagem->save();
+
+        return redirect('/Mensagem')->with('success', 'Mensagem criada com sucesso!!');
+             }
 
     /**
      * Display the specified resource.

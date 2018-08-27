@@ -1,11 +1,22 @@
 <h1>Lista de Mensagens</h1>
 <hr>
+ @if(\Session::has('success'))
+	<div class="container">
+  		<div class="alert alert-success">
+    		{{\Session::get('success')}}
+  		</div>
+  	</div>
+  @endif
+
 @foreach($mensagens as $mensagem)
 	<h3>{{$mensagem->autor}}</h3>
-	<p><a href="/mensagens/{{$mensagem->id}}">{{$mensagem->titulo}}</a></p>
+	<p><a href="/mensagem/{{$mensagem->id}}">{{$mensagem->titulo}}</a></p>
 	<p>{{$mensagem->texto}}</p>
 	<br>
 @endforeach
+
+<br>
+<p><a href="/mensagem/create">Criar novo registro</a></p>
 
 
 
