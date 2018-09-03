@@ -12,7 +12,7 @@ class AddMensagensTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {                                        
         Schema::create('mensagens', function (Blueprint $table) {
             $table->increments('id');   //código identificador
             $table->string('titulo');   //título da mensagem
@@ -34,3 +34,4 @@ class AddMensagensTable extends Migration
         });
     }
 }
+gsadogmksd

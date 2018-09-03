@@ -66,7 +66,7 @@ class MensagemController extends Controller
         $obj_Mensagem->autor = $request['autor'];
         $obj_Mensagem->save();
 
-        return redirect('/Mensagem')->with('success', 'Mensagem criada com sucesso!!');
+        return redirect('/mensagem')->with('success', 'Mensagem criada com sucesso!!');
              }
 
     /**
