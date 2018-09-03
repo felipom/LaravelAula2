@@ -34,4 +34,3 @@ class AddMensagensTable extends Migration
         });
     }
 }
-gsadogmksd

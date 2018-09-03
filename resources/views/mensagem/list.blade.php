@@ -11,7 +11,9 @@
 @foreach($mensagens as $mensagem)
 	<h3>{{$mensagem->autor}}</h3>
 	<p><a href="/mensagem/{{$mensagem->id}}">{{$mensagem->titulo}}</a></p>
+
 	<p>{{$mensagem->texto}}</p>
+	<p><a href="/mensagem/{{$mensagem->id}}/edit">Editar</a> </p>
 	<br>
 @endforeach
 
