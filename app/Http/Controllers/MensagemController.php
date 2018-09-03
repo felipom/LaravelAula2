@@ -37,16 +37,16 @@ class MensagemController extends Controller
     public function store(Request $request)
     {
         $messages = array(
-            'title.required' => 'É obrigatório um título para a atividade',
-            'description.required' => 'É obrigatória uma descrição para a atividade',
-            'scheduledto.required' => 'É obrigatório o cadastro da data/hora da atividade',
+            'titulo.required' => 'É obrigatório um título para a atividade',
+            'texto.required' => 'É obrigatória uma descrição para a atividade',
+            'autor.required' => 'É obrigatório o cadastro da data/hora da atividade',
         );
 
         //vetor com as especificações de validações
         $regras = array(
-            'title' => 'required|string|max:255',
-            'description' => 'required',
-            'scheduledto' => 'required|string',
+            'titulo' => 'required|string|max:255',
+            'texto' => 'required',
+            'autor' => 'required|string',
         );
 
         //cria o objeto com as regras de validação
@@ -61,9 +61,9 @@ class MensagemController extends Controller
 
         //se passou pelas validações, processa e salva no banco...
         $obj_Mensagem = new Mensagem();
-        $obj_Mensagem->title =       $request['title'];
-        $obj_Mensagem->description = $request['description'];
-        $obj_Mensagem->scheduledto = $request['scheduledto'];
+        $obj_Mensagem->titulo =       $request['titulo'];
+        $obj_Mensagem->texto = $request['texto'];
+        $obj_Mensagem->autor = $request['autor'];
         $obj_Mensagem->save();
 
         return redirect('/Mensagem')->with('success', 'Mensagem criada com sucesso!!');
