@@ -150,7 +150,7 @@ class MensagemController extends Controller
     {
         $obj_mensagem = Mensagem::findOrFail($id);
         $obj_mensagem->delete($id);
-        return redirect('/mensagem')->with('sucess','Atividade excluída com Sucesso!!');    }
+        return redirect('/mensagem')->with('success','Atividade excluída com Sucesso!!');    }
 
 
 }
