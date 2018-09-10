@@ -14,6 +14,7 @@
 
 	<p>{{$mensagem->texto}}</p>
 	<p><a href="/mensagem/{{$mensagem->id}}/edit">Editar</a> </p>
+	 <p><a href="/mensagem/{{$mensagem->id}}/delete">Deletar</a></p>
 	<br>
 @endforeach
 

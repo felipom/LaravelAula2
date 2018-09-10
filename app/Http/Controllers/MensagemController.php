@@ -87,10 +87,10 @@ class MensagemController extends Controller
      * @param  \App\Mensagem  $mensagem
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mensagem $mensagem)
+    public function edit($id)
     {
-        $obj_Mensagem = Mensagem::find($id);
-        return view('mensagem.edit',['mensagem' => $obj_Mensagem]);      }
+        $obj_mensagem = Mensagem::find($id);
+        return view('mensagem.edit',['mensagem' => $obj_mensagem]);      }
 
     /**
      * Update the specified resource in storage.
@@ -99,7 +99,7 @@ class MensagemController extends Controller
      * @param  \App\Mensagem  $mensagem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mensagem $mensagem)
+    public function update(Request $request, $id)
     {
         $messages = array(
             'titulo.required' => 'É obrigatório um título para a atividade',
@@ -134,14 +134,23 @@ class MensagemController extends Controller
         return redirect('/mensagem')->with('success', 'Mensagem alterada com sucesso!!');
     }
 
+    public function delete($id)
+    {
+        $obj_mensagem = Mensagem::find($id);
+        return view('mensagem.delete',['mensagem' => $obj_mensagem]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Mensagem  $mensagem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mensagem $mensagem)
+    public function destroy($id)
     {
-        //
-    }
+        $obj_mensagem = Mensagem::findOrFail($id);
+        $obj_mensagem->delete($id);
+        return redirect('/mensagem')->with('sucess','Atividade excluída com Sucesso!!');    }
+
+
 }

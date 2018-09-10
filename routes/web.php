@@ -29,8 +29,14 @@ Route::get('/mensagem', 'MensagemController@index');
 Route::get('/mensagem/create', 'MensagemController@create');
 Route::post('/mensagem', 'MensagemController@store');
 Route::get('/mensagem/{id}', 'MensagemController@show');
-Route::get('/mensagem/{id}/edit', 'AtividadeController@edit');
-Route::put('/mensagem/{id}', 'AtividadeController@update');
+Route::get('/mensagem/{id}/edit', 'MensagemController@edit');
+Route::put('/mensagem/{id}', 'MensagemController@update');
+Route::get('/mensagem/{id}/delete', 'MensagemController@delete');
+Route::delete('/mensagem/{id}', 'MensagemController@destroy');
+
+
+
+
 
 
 

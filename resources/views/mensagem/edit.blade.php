@@ -19,8 +19,8 @@
 	{{ method_field('PUT') }}
 	Título: 		<input type="text" name="titulo" value="{{$mensagem->titulo}}"> 	     <br>
 	Texto:		<input type="text" name="texto" value="{{$mensagem->texto}}">   <br>
-	Autor:  <input type="text" name="autor" value="{{$mensagem->autor
-	}}">   <br>
+	Autor:  <input type="text" name="autor" value="{{$mensagem->autor}}">   <br>
+	
 	<input type="submit" value="Salvar">
 </form>
 
