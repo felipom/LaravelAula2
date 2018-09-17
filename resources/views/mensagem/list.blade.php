@@ -9,18 +9,24 @@
   @endif
 
 @foreach($mensagens as $mensagem)
-	<h3>{{$mensagem->autor}}</h3>
-	<p><a href="/mensagem/{{$mensagem->id}}">{{$mensagem->titulo}}</a></p>
-
-	<p>{{$mensagem->texto}}</p>
-	<p><a href="/mensagem/{{$mensagem->id}}/edit">Editar</a> </p>
-	 <p><a href="/mensagem/{{$mensagem->id}}/delete">Deletar</a></p>
+	
+	<p><b>Titulo:</b> {{$mensagem->titulo}}</p>
+	<p><b>Texto:</b> {{$mensagem->texto}}</p>
+	<p><b>Autor:</b> {{$mensagem->autor}}</p>
+	@auth
+	<p>Ações: 
+    <a href="/mensagem/{{$mensagem->id}}">Ver Mais</a>
+    <a href="/mensagem/{{$mensagem->id}}/edit">Editar</a> 
+    <a href="/mensagem/{{$mensagem->id}}/delete">Deletar</a>
+  </p>
+  @endauth
 	<br>
 @endforeach
 
 <br>
+@auth
 <p><a href="/mensagem/create">Criar novo registro</a></p>
-
+@endauth
 
 
 <!-- \Carbon\Carbon::parse($atividade->scheduledto)->format('d/m/Y h:m')  -->
