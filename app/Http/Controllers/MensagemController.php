@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mensagem;
+use App\Atividade;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Validator;
 
@@ -26,6 +27,7 @@ class MensagemController extends Controller
      */
     public function create()
     {
+        $atividade = Atividade::all();
         return view('mensagem.create');    }
 
     /**
